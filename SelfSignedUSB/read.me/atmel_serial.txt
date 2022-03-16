@@ -1,0 +1,420 @@
+STEPS TO CREATE ATMEL-BASED CUSTOM USB/SERIAL DRIVER in Windows 10
+=======================================================================
+
+(c) Secoh, 2020
+This document can be distributed free of restrictions and free of charge
+under Apache 2.0 license terms. The document is provided AS-IS in hope
+to be useful. No warranty, responsibility of any kind, promise of any
+kind, statement or fitness for any purpose, can be implied or assumed.
+
+Table of Contents
+
+1. Background
+2. Further Reading
+3. Prerequisites
+4. Tools To Be Used
+5. Creating And Installing Certificates For The First Time
+   A) Creating, Exporting, and Importing The Signing Root Certificate
+   B) Making Exportable Public Certificate
+6. Overview of Firmware Program on USB Device
+7. Creating INF File
+8. Signing INF File and Making The Installation Package
+9. Installing The Package
+
+
+1. Background
+
+Serial (COM) port is very popular computer peripheral standard used
+to control external hardware and exchange data from host PC to other
+destinations. Even if disappeared from modern computer designs
+(due to inherent limitations of the original RS-232 standard and
+relatively large size of its connectors), serial ports are still used
+in great number of present and prospective devices because of
+the simplicity and availability. Nowadays, physical RS-232 interface was
+replaced by USB-to-Serial converters, connected to computers via USB
+ports and using USB CDC class driver. Modern versions of Windows (staring
+with Windows 8, AFAIK) have the USBSER.SYS driver pre-installed. Large
+pool of microcontroller designs offer direct USB and USB-to-Serial
+implementation capable of using the standard driver without modifications
+to executable files or hardware designs.
+
+Since the USB is swappable and hot-plugged interface, it is no longer
+possible to assign the COM port numbers statically in hardware. Instead,
+the USB standard offers VID/PID mechanism to uniquely identify
+the attached device. VID/PID are Vendor ID and Product ID, each are
+16-bit unsigned integers. Ideally, each USB device has the unique VID/PID
+combination, so the program can scan the computer environment for known
+combinations to determine whether the required device is connected, and
+what COM port number it is assigned to, without need to establish test
+connection (which can be potentially harmful for a non-participating
+device).
+
+USB-IF established a procedure where USB device manufacturers have
+to obtain the unique VIDs, and then assume responsibility of assigning
+the unique PIDs to the different production models. This will make
+the pair VID/PID unique for all of the end users. However, it is
+prohibitively expensive for small hardware developers, so people are
+finding other ways to "borrow" VID/PID combination, including taking over
+unused VID, using "deactivated" VID, purchasing PIDs from certain VID
+licensees (disputed practice), sub-licensing PIDs from microcontroller
+manufacturers (they frequently have official VIDs), or joining open
+hardware projects.
+
+In many cases, small developers don't even need the unique VID/PID pair,
+as the vendors of USB-enabled microelectronics commonly do have all
+the necessary infrastructure, including reference designs, application
+notes, drivers, and configurations, properly tested and certified under
+USB-IF rules. It is normally OK to use reference design and driver free
+of charge (or with minimal restrictions), but in this case we are locked
+to the specific VID/PID pair. If still want to use our own VID/PID, we
+need to modify the driver.
+
+Unlike previous versions of Windows, Windows 10 now REQUIRES all hardware
+drivers to be digitally signed with certificate(s) ascending to so-called
+Trusted Root Certification Authority, stored inside the operating system.
+If any component of a driver is modified, say, INF file which is text,
+the present signature becomes invalid and the driver has to be signed
+again. Microsoft also established the procedure how to sign a driver.
+It is mostly unrelated to the discussion below. The only important thing
+to know, it requires the developer to obtain so-called EV-type signing
+digital certificate (which is expensive). Worse, the certification of
+a USB device for Windows will also require valid "official" VID/PID pair.
+
+To mention it for completeness, there are ways to circumvent the driver
+signature requirement (like F7 at boot time). However, they are either
+awkward, or disrupt normal Windows functions, or they lower the security
+which can be undesirable in certain cases.
+
+Below we discuss the method to create a custom USB-to-Serial driver, and
+to circumvent the Windows 10 driver signature enforcement, without
+compromise to Windows security. The ideas described here may also
+be useful to create any USB drivers, other than using usbser.sys or
+of CDC class. However, this method introduces the new important
+limitation: as long as your device and driver will miss the official
+testing and certification process, your end users will have to trust
+YOU alone.
+
+
+2. Further reading
+
+How to create new self-signed digital certificate in Windows
+
+https://docs.microsoft.com/en-us/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps
+https://support.jetglobal.com/hc/en-us/articles/235636308-How-To-Create-a-SHA-256-Self-Signed-Certificate
+https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html#p_authz_cert_attributes_conf
+https://4sysops.com/archives/create-a-self-signed-certificate-with-powershell/
+
+Working with certificates in Windows
+
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil
+https://docs.microsoft.com/en-us/powershell/module/pkiclient/export-certificate?view=win10-ps
+https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/about/about_certificate_provider?view=powershell-7
+https://en.wikipedia.org/wiki/Chain_of_trust
+
+Concept of public, private certificates, digital signatures, etc
+
+https://en.wikipedia.org/wiki/Public-key_cryptography
+https://www.globalsign.com/en/ssl-information-center/what-is-public-key-cryptography/
+
+How to create and verify INF file
+
+https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/infverif
+https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-ddinstall-section
+
+Signing a driver with the certificate that we already have
+
+https://docs.microsoft.com/ru-ru/windows-hardware/drivers/devtest/inf2cat
+https://docs.microsoft.com/ru-ru/windows-hardware/drivers/devtest/signtool
+
+How to disable driver signature enforcement on Windows 10
+https://windowsreport.com/driver-signature-enforcement-windows-10/
+
+USB VID and PID via sub-licensing (Microchip)
+https://microchipdeveloper.com/faq:3180
+
+PID Registry for Open Source hardware projects
+http://pid.codes/
+
+Finding COM port number by its VID and PID
+https://aticleworld.com/get-com-port-of-usb-serial-device/
+
+Downloadable Utilities:
+
+Creating ISO package from a folder in Windows - WinCDEmu
+https://sysprogs.com/wincdemu/download/
+https://github.com/sysprogs/WinCDEmu/issues/19
+
+Serial Communications - TeraTerm
+https://ttssh2.osdn.jp/index.html.en
+
+FAR
+https://www.farmanager.com/
+
+Where to get free or low cost VID/PID (disapproved by USB-IF but people
+use them):
+
+http://pid.codes
+http://wiki.openmoko.org/wiki/USB_Product_IDs
+https://www.obdev.at/products/vusb/license.html (questionable)
+https://www.mcselec.com/index.php?page=shop.product_details&flypage=shop.flypage&product_id=92&option=com_phpshop&Itemid=1
+https://en.wikipedia.org/wiki/USB_Implementers_Forum (see links to vendors of USB-enabled microcontrollers)
+Potentially, 0xF055 may be open later on (listed as "obsolete" in USB-IF list as of 23 Oct 2019)
+
+
+3. Prerequisites
+
+End-user installation of the discussed USB/Serial driver to Windows 10
+requires only built-in tools and administrative privileges.
+
+Below is the list of what we need to create such driver:
+- Windows 10
+- Administrative privileges
+- Windows 10 SDK
+- Windows 10 WDK (formerly known as DDK)
+- WinCDEmu
+- Appropriate development board capable of USB
+  (using Atmel SAMD11 Xplained)
+- Appropriate environment for firmware development for
+  the respective hardware (using Atmel Studio 7)
+- Terminal program for serial communications (using TeraTerm)
+- Basic understanding of electronics and software engineering
+- Any Norton Commander clone is very handy (using FAR)
+
+Please DO NOT use words: Secoh and SK, in your development
+(case-insensitive). Thank you!
+
+As defined by the USB coordination, we may not use "USB Logo", whatever
+it happens to be, in conjunction with our custom designs even if based
+on the USB-certified reference design reproduced verbatim, unless
+it undergoes the prescribed testing and approval process first.
+I have that mentioned.
+
+
+4. Tools To Be Used
+
+Using flags:  none - pre-installed Windows tool, Windows provides path
+                     to the executable
+               *   - standard Windows tool that requires separate
+                     installation; path is what I have on my system
+               x   - third-party software, user needs to know path
+                     where it is installed
+               !   - user doesn't need to know path, the program
+                     integrates into the shell
+               #   - the program is launched by the icon on the desktop,
+                     the icon is created at the installation
+
+- Windows Built-in Tools
+
+powershell           C:\Windows\System32\WindowsPowerShell\v1.0\PowerShell.exe
+MMC                  C:\Windows\System32\mmc.exe
+certutil             C:\Windows\System32\certutil.exe
+cmd                  C:\Windows\System32\cmd.exe
+
+- Windows Installed Tools, Microsoft
+
+infverif       *     C:\Program Files (x86)\Windows Kits\10\Tools\x86\infverif.exe
+Inf2Cat        *     C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86\Inf2Cat.exe
+signtool       *     C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x86\signtool.exe
+
+- Third Party Installed Programs
+
+WinCDEmu       x     C:\Program Files (x86)\WinCDEmu\mkisofs.exe
+AtmelStudio    #     C:\Program Files (x86)\Atmel\Studio\7.0\AtmelStudio.exe
+TeraTerm       #     C:\Program Files (x86)\teraterm\ttermpro.exe
+FAR            #     C:\Users\************\Desktop\Far\Far.exe
+
+Again, the end-user installation of the driver package will require
+built-in Windows tools ONLY.
+
+
+5. Creating And Installing Certificates For The First Time
+5.A. Creating, Exporting, and Importing The Signing Root Certificate
+
+- Creating new certificate from scratch and saving it locally
+
+Run command-line shell as Administrator. I am using FAR, but simple
+cmd.exe will work fine, too.
+Run powershell. Inside powershell, execute the following commands (each
+command is single line):
+
+new-selfsignedcertificate -CertStoreLocation Cert:\LocalMachine\My -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3") -Subject "CN=SK.root,CN=Secoh,E=work@secoh.net,O=Custom USB to Serial adapters,S=RainCloud" -NotAfter (Get-Date).AddYears(50)
+
+$textpass="sk.root"   # This is password for the private key
+
+$path="C:\Windows\System32"
+echo $textpass > .\sk_root.pass.txt
+$pw=ConvertTo-SecureString -String $textpass -Force -AsPlainText
+$cert=get-childitem -Path cert:\LocalMachine\My -DNSName SK.root
+Export-PfxCertificate -Cert $cert -FilePath .\sk_root.bin.pfx -Password $pw
+certutil -encode .\sk_root.bin.pfx .\sk_root.pfx.txt
+
+Do not exit powershell yet. We still need its environment for commands
+in section 5.B.
+
+These commands will create a certificate identified as "SK.root" in
+the list, for purpose of signing software (and drivers), valid for
+50 years starting from now, with maximum cryptographic strength currently
+available, and then save it to the local files. The certificate will also
+have some extra information, such as name, e-mail, purpose, etc., defined
+in X.509 standard. Certain fields are not really used anywhere, such as
+"O" which can stand both for Organization and for Other.
+
+Unlike real-world X.509 certificates, this one doesn't need separate CA
+and its dependents. Windows can accept the single certificate for
+multiple roles as long as its usage is legitimate.
+
+HOWEVER, YOU DO NEED TO KEEP YOUR SIGNING CERTIFICATE SECRET, to prevent
+others from impersonating you as a developer. The driver installation
+process only requires the public certificate which we can safely share.
+
+The easiest way to verify the certificate is to run MMC console. Select
+"Add/Remove Snap-ins" option in File menu, select Certificates, Add this
+item to the right panel, select Computer account and Local computer
+(it will open Local Machine storage), and click OK. The newly created
+certificate shall be in the Personal folder. Later on, we also will work
+with Trusted Root Certification Authorities and Trusted Publishers
+folders. Normally, certificates will also propagate to Intermediate
+Certification Authorities.
+
+- Importing private key from PFX file
+
+Option 1: double-click on the file with PFX extension, enter
+administrative mode, enter password, select store.
+Option 2: run powershell as Administrator, run the commands:
+
+$textpass="sk.root"   # This is password for the private key
+$path="C:\Windows\System32"
+certutil -p $textpass -importPFX .\sk_root.pfx.txt NoProtect
+
+Continue to section 5.B. to create the public certificate.
+
+
+5.B. Making Exportable Public Certificate
+
+If not done before, create or import private certificate (section 5.A.).
+If not done before, run powershell as Administrator. Run commands:
+
+$path="C:\Windows\System32"
+$cert=get-childitem -Path cert:\LocalMachine\My -DNSName SK.root
+export-certificate -Cert $cert -FilePath .\sk_root.cer.tmp -Type CERT
+certutil -encode $origin\sk_root.cer.tmp .\sk_root.cer
+del .\sk_root.cer.tmp
+
+This will create the public certificate in base64 format that we can
+share with our drivers.
+
+
+6. Overview of Firmware Program on USB Device
+
+USB device development tools normally provide ways to program VID and PID
+into the device.
+
+In examples provided by Atmel/Microchip, VID and PID are defined in
+conf_usb.h header:
+
+#define  USB_DEVICE_VENDOR_ID             USB_VID_ATMEL
+#define  USB_DEVICE_PRODUCT_ID            USB_PID_ATMEL_ASF_CDC
+
+We can replace them with our own numbers, such as:
+
+#define  USB_DEVICE_VENDOR_ID             0x4004
+#define  USB_DEVICE_PRODUCT_ID            0x4321
+
+After program is successfully compiled, we can burn the firmware into
+the device by using Device Programming window in Tools menu. Select
+appropriate interface (EDBG, ATSAMD11D14AM, SWD in my case), click Apply.
+Go to Memories, click Program in Flash section.
+
+Other firmware functions and other USB properties are outside the scope
+of the manual.
+
+
+7. Creating INF File
+
+The INF file uses generic USB to serial driver, usbser.sys, provided
+by all recent versions of Windows. We need to create a text file that
+will contain the standard header and decorations, the device name,
+its VID and PID, and reference to the generic Windows driver. The common
+practice for occasional developers would be taking existing INF file with
+similar function, and modifying it for our needs.
+
+In my case, I started with a driver for Arduino boards. One can search
+C:\Windows\INF folder for the appropriate example, too.
+
+
+8. Signing INF File and Making The Installation Package
+
+Before we can sign the INF driver, we need to verify it is correct and
+free of errors:
+
+infverif.exe plus1echo.inf
+
+Signing the INF driver is done in two steps. First, we need to create
+unsigned CAT file based on the INF. Second, we sign CAT file with PFX
+certificate. Not that the end used doesn't need PFX, only public
+certificate with CER extension is required on the user end.
+
+Lets place our INF file into the folder "C:\Atmel SAM\serial".
+The INF file must be the one and the only file in this folder.
+The following commands are typically used to sign it:
+
+Inf2Cat.exe" /driver:"C:\Atmel SAM\serial" /os:7_X64,7_X86
+signtool.exe" sign /v /f sk_root.bin.pfx /p sk.root "C:\Atmel SAM\serial\plus1echo.cat"
+
+Other manuals recommend that we use extended list of all supported
+operating systems, however, "Windows 7 and up" mode worked fine
+in my tests. Currently /os switch can accept the entire range from
+Windows XP to Windows 10.
+
+Option /p in signtool specifies the password for PFX certificate
+in open-text form. IMPORTANT, the PFX certificate is accepted here only
+in binary form, and base64-encoded certificate will fail with signtool.
+If we have to start with encoded certificate, we need to decode it first
+with option -decode of certutil utility.
+
+The minimum installation package delivered to the end user must contain
+three files: the original INF file, the signed CAT file, and the public
+CER certificate derived from our signing (secret) certificate.
+In our case, the files are:
+
+plus1echo.inf
+plus1echo.cat
+sk_root.cer
+
+Also, it may be beneficial to combine the package into the single archive
+so the files are not scattered around. Other benefit may be the ability
+to include additional descriptions and scripts into the package. Below,
+we discuss one possible way to make the "live" archive in form of ISO
+image compressed with ZIP. The ZIP compression in folders is supported
+starting from Windows XP, and the ability to natively mount an ISO volume
+is supported since Windows 8. Lets assume we still have all the files
+in "C:\Atmel SAM\serial", and we use mkisofs.exe utility (part
+of WinCDEmu package) to create the ISO:
+
+mkisofs" -r -J -o package.iso -V "Volume ID" -sysid Win32 -publisher Secoh -A "Application Info" -no-pad -no-cache-inodes "C:\Atmel SAM\serial"
+
+Important, -no-cache-inodes option is required under Windows file
+systems, as it doesn't support UNIX inodes. Options -r and -J are
+necessary to support adequate file names representation, and -no-pad
+option makes the output a little smaller.
+
+Finally, we compress the it in the powershell:
+
+Compress-Archive ".\package.iso" ".\package.iso.zip"
+
+
+9. Installing The Package
+
+Before the normal installation of the INF file can proceed,
+the associated public certificate must be installed to the Trusted
+Publishers and the Trusted Root Certification Authorities certificate
+storage folders. It can be done manually by right-clicking on the CER
+file, or by importing in MMC console, or by running the following
+commands in administrative mode:
+
+certutil -addstore TrustedPublisher sk_root.cer
+certutil -addstore Root sk_root.cer
+
+The INF file can then be installed by right-clicking on it, or used
+to update generic Windows driver, or supplied to the installation wizard.
+

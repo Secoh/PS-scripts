@@ -1,0 +1,39 @@
+#
+# DO NOT RUN THIS FILE DIRECTLY
+#
+#   Copyright (2020) Secoh
+#   Licensed under the Apache License, Version 2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
+#   Distributed on an "as-is" basis, without warranties or
+#   conditions of any kind.
+#
+
+$config_name = ".\mock_cert.config"
+
+function Get-Config-Item($itemname)
+{
+  $selection = ( Get-Content $config_name | Select-String -Pattern $itemname )
+  if ("$selection" -ne "") { ( ($selection)[-1] -split $itemname )[-1].trim() }
+}
+
+echo "-------------------------------------------------"
+echo "GENERATE SAMPLE INF FILE SESSION $(Get-Date)"
+
+$infverif_path = Get-Config-Item "Infverif-Path:"
+
+$inf_name  = Get-Config-Item "Inf-Name:"
+$inf_maker = Get-Config-Item "Inf-Company:"
+$inf_ver   = Get-Config-Item "Inf-Version:"
+$common_vid= Get-Config-Item "VID:"
+
+
+first try Device-Name: and PID: for single entry, then try
+Device-Name-<number>: and PID-<number>: for numbers starting from 1
+if first is empty, error
+if a pair is incomplete, error
+if both are empty for N, then we have N-1 entries
+
+
+$iso_tools_path = Get-Config-Item "ISO-Tools-Path:"
+
+$infverif_path = Get-Config-Item "Infverif-Path:"

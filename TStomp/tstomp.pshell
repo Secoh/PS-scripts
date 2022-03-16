@@ -1,0 +1,11 @@
+$list = (get-childitem . -include * -recurse -force -exclude tstomp.log)
+$now = (get-date)
+echo Access
+foreach ($item in $list) { set-itemproperty -path $item -name Attributes -value Archive }
+echo CreationTime
+foreach ($item in $list) { set-itemproperty -path $item -name CreationTime -value $now }
+echo LastWriteTime
+foreach ($item in $list) { set-itemproperty -path $item -name LastWriteTime -value $now }
+echo LastAccessTime
+foreach ($item in $list) { set-itemproperty -path $item -name LastAccessTime -value $now }
+echo Done

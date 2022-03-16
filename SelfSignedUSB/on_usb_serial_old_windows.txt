@@ -1,0 +1,28 @@
+use of fakemodem
+
+https://docs.microsoft.com/en-us/windows-hardware/drivers/usbcon/usb-driver-installation-based-on-compatible-ids
+
+and
+
+https://support.microsoft.com/en-us/help/837637/how-to-use-or-to-reference-the-usbser-sys-driver-from-universal-serial :
+
+To reference the Usbser.sys driver in all the products that are listed in the "Applies to" section, we recommend that USB modem .inf files reference the Mdmcpq.inf file.
+
+For example, the DDInstall section of an .inf file uses the Include directive and may be similar to the following:
+[DDInstall.NT]
+include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection 
+
+[DDInstall.NT.Services]
+include=mdmcpq.inf
+AddService=usbser, 0x00000000, LowerFilter_Service_Inst 
+
+[DDInstall.NT.HW]
+include=mdmcpq.inf
+AddReg=LowerFilterAddReg
+The following sections appear in the Mdmcpq.inf file in all the products that are listed in the "Applies to" section:
+FakeModemCopyFileSection
+LowerFilter_Service_Inst
+LowerFilterAddReg
+References
+For more information, see the "Device Installation" topic in the Microsoft Windows Driver Development Kit documentation.

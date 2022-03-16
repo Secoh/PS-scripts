@@ -1,0 +1,1288 @@
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/05/2020 12:26:56
+*** Creating New ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+AFF452797EFD21FFC6F02A4982476BC328475964  CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, ...
+
+
+*** Exporting PFX ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:26           2861 skx_root.pfx.tmp                                                      
+Input Length = 2861
+Output Length = 3992
+CertUtil: -encode command completed successfully.
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:26            978 skx_root.cer.tmp                                                      
+
+
+Input Length = 978
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Certificate "SKX.root" added to store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Certificate "SKX.root" added to store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/05/2020 12:46:42
+*** Certificate SKX.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+AFF452797EFD21FFC6F02A4982476BC328475964  CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, ...
+
+
+*** Exporting PFX ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:46           2861 skx_root.pfx.tmp                                                      
+Input Length = 2861
+Output Length = 3992
+CertUtil: -encode command completed successfully.
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:46            978 skx_root.cer.tmp                                                      
+
+
+Input Length = 978
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: 4129b3822bce50a2402d227a24d437fa
+Issuer: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+ NotBefore: 05-Feb-20 12:16
+ NotAfter: 05-Feb-70 12:26
+Subject: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): aff452797efd21ffc6f02a4982476bc328475964
+
+Certificate "SKX.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 4:
+Serial Number: 4129b3822bce50a2402d227a24d437fa
+Issuer: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+ NotBefore: 05-Feb-20 12:16
+ NotAfter: 05-Feb-70 12:26
+Subject: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): aff452797efd21ffc6f02a4982476bc328475964
+
+Certificate "SKX.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/05/2020 12:47:16
+*** Certificate SKX.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+AFF452797EFD21FFC6F02A4982476BC328475964  CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, ...
+
+
+*** Exporting PFX ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:47           2861 skx_root.pfx.tmp                                                      
+Input Length = 2861
+Output Length = 3992
+CertUtil: -encode command completed successfully.
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:47            978 skx_root.cer.tmp                                                      
+
+
+Input Length = 978
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 6:
+Serial Number: 4129b3822bce50a2402d227a24d437fa
+Issuer: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+ NotBefore: 05-Feb-20 12:16
+ NotAfter: 05-Feb-70 12:26
+Subject: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): aff452797efd21ffc6f02a4982476bc328475964
+
+Certificate "SKX.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 4:
+Serial Number: 4129b3822bce50a2402d227a24d437fa
+Issuer: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+ NotBefore: 05-Feb-20 12:16
+ NotAfter: 05-Feb-70 12:26
+Subject: CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=RainCloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): aff452797efd21ffc6f02a4982476bc328475964
+
+Certificate "SKX.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/05/2020 12:48:21
+*** Importing ***
+Administrator permissions are needed to use the selected options.  Use an administrator command prompt to complete these tasks.
+CertUtil: The requested operation requires elevation.
+*** Certificate SKX.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+AFF452797EFD21FFC6F02A4982476BC328475964  CN=SKX.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, ...
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        05-Feb-20     12:48            978 skx_root.cer.tmp                                                      
+
+
+Input Length = 978
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+Administrator permissions are needed to use the selected options.  Use an administrator command prompt to complete these tasks.
+CertUtil: The requested operation requires elevation.
+Administrator permissions are needed to use the selected options.  Use an administrator command prompt to complete these tasks.
+CertUtil: The requested operation requires elevation.
+-------------------------------------------------
+SIGN AND PACKAGE DRIVER SESSION 02/05/2020 12:50:57
+*** Creating CAT file ***
+.......................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test\TMP\raincloud_serial.cat
+*** Get binary PFX ***
+Input Length = 3992
+Output Length = 2861
+CertUtil: -decode command completed successfully.
+*** Signing CAT file ***
+The following certificate was selected:
+    Issued to: SKX.root
+    Issued by: SKX.root
+    Expires:   Wed Feb 05 12:26:57 2070
+    SHA1 hash: AFF452797EFD21FFC6F02A4982476BC328475964
+
+Done Adding Additional Store
+Successfully signed: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\test\TMP\raincloud_serial.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+*** Copying public certificate ***
+*** Making compressed ISO ***
+C:\Program Files (x86)\WinCDEmu\mkisofs.exe: Warning: Cannot add inode hints with -no-cache-inodes.
+Total translation table size: 0
+Total rockridge attributes bytes: 606
+Total directory bytes: 914
+Path table size(bytes): 10
+37 extents written (0 MB)
+*** Cleanup ***
+-------------------------------------------------
+SIGN AND PACKAGE DRIVER SESSION 02/06/2020 13:33:15
+*** Creating CAT file ***
+.......................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+*** Get binary PFX ***
+Input Length = 3980
+Output Length = 2853
+CertUtil: -decode command completed successfully.
+*** Signing CAT file ***
+The following certificate was selected:
+    Issued to: SK.root
+    Issued by: SK.root
+    Expires:   Mon Feb 03 17:21:01 2070
+    SHA1 hash: DA36FC1785045CEECB2368DFD14DA3A312749233
+
+Done Adding Additional Store
+Successfully signed: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+*** Copying public certificate ***
+*** Making compressed ISO ***
+C:\Program Files (x86)\WinCDEmu\mkisofs.exe: Warning: Cannot add inode hints with -no-cache-inodes.
+Total translation table size: 0
+Total rockridge attributes bytes: 605
+Total directory bytes: 912
+Path table size(bytes): 10
+37 extents written (0 MB)
+*** Cleanup ***
+-------------------------------------------------
+SIGN AND PACKAGE DRIVER SESSION 02/06/2020 13:33:59
+*** Creating CAT file ***
+.......................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\com_sim.cat
+*** Get binary PFX ***
+Input Length = 3980
+Output Length = 2853
+CertUtil: -decode command completed successfully.
+*** Signing CAT file ***
+The following certificate was selected:
+    Issued to: SK.root
+    Issued by: SK.root
+    Expires:   Mon Feb 03 17:21:01 2070
+    SHA1 hash: DA36FC1785045CEECB2368DFD14DA3A312749233
+
+Done Adding Additional Store
+Successfully signed: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\com_sim.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+*** Copying public certificate ***
+*** Making compressed ISO ***
+C:\Program Files (x86)\WinCDEmu\mkisofs.exe: Warning: Cannot add inode hints with -no-cache-inodes.
+Total translation table size: 0
+Total rockridge attributes bytes: 587
+Total directory bytes: 892
+Path table size(bytes): 10
+37 extents written (0 MB)
+*** Cleanup ***
+-------------------------------------------------
+SIGN AND PACKAGE DRIVER SESSION 02/06/2020 14:19:55
+*** Creating CAT file ***
+.......................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+*** Get binary PFX ***
+Input Length = 3980
+Output Length = 2853
+CertUtil: -decode command completed successfully.
+*** Signing CAT file ***
+The following certificate was selected:
+    Issued to: SK.root
+    Issued by: SK.root
+    Expires:   Mon Feb 03 17:21:01 2070
+    SHA1 hash: DA36FC1785045CEECB2368DFD14DA3A312749233
+
+Done Adding Additional Store
+Successfully signed: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+*** Copying public certificate ***
+*** Making compressed ISO ***
+C:\Program Files (x86)\WinCDEmu\mkisofs.exe: Warning: Cannot add inode hints with -no-cache-inodes.
+Total translation table size: 0
+Total rockridge attributes bytes: 605
+Total directory bytes: 912
+Path table size(bytes): 10
+37 extents written (0 MB)
+*** Cleanup ***
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 00:23:37
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+891F701A43834A8ECC3347C98F15572D86DBEFD0  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting PFX ***
+
+
+    Directory: Q:\_work\atmel-serial\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-07     00:23           2813 sk_root.pfx.tmp                                  
+Input Length = 2813
+Output Length = 3926
+CertUtil: -encode command completed successfully.
+
+
+*** Exporting CER ***
+
+
+    Directory: Q:\_work\atmel-serial\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-07     00:23            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 5:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 00:24:51
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+891F701A43834A8ECC3347C98F15572D86DBEFD0  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting CER ***
+
+
+    Directory: Q:\_work\atmel-serial\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-07     00:24            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 5:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 00:25:56
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+891F701A43834A8ECC3347C98F15572D86DBEFD0  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting CER ***
+
+
+    Directory: Q:\_work\atmel-serial\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-07     00:25            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 5:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 00:26:40
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+891F701A43834A8ECC3347C98F15572D86DBEFD0  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting CER ***
+
+
+    Directory: Q:\_work\atmel-serial\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-07     00:26            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 5:
+Serial Number: 6b2849e19a0460af4cad38148d2a94cd
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-02 22:08
+ NotAfter: 2070-02-02 22:18
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): 891f701a43834a8ecc3347c98f15572d86dbefd0
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:11:41
+*** Importing ***
+Certificate "SK.root" added to store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:11:59
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:12:14
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:12:26
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:13:27
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:18:21
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 11:20:22
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+ERROR: More than ONE certificate with name SK.root is present, cannot continue
+[Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  15D479FF88B06BA1410F2B833C171FAD
+
+[Not Before]
+  03-Feb-20 17:11:01
+
+[Not After]
+  03-Feb-70 17:21:01
+
+[Thumbprint]
+  DA36FC1785045CEECB2368DFD14DA3A312749233
+ [Subject]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Issuer]
+  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+
+[Serial Number]
+  6B2849E19A0460AF4CAD38148D2A94CD
+
+[Not Before]
+  02-Feb-20 22:08:25
+
+[Not After]
+  02-Feb-70 22:18:25
+
+[Thumbprint]
+  891F701A43834A8ECC3347C98F15572D86DBEFD0
+
+-------------------------------------------------
+SIGN AND PACKAGE DRIVER SESSION 02/07/2020 11:46:48
+*** Creating CAT file ***
+.......................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+*** Get binary PFX ***
+Input Length = 3980
+Output Length = 2853
+CertUtil: -decode command completed successfully.
+*** Signing CAT file ***
+The following certificate was selected:
+    Issued to: SK.root
+    Issued by: SK.root
+    Expires:   Mon Feb 03 17:21:01 2070
+    SHA1 hash: DA36FC1785045CEECB2368DFD14DA3A312749233
+
+Done Adding Additional Store
+Successfully signed: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+*** Copying public certificate ***
+*** Making compressed ISO ***
+C:\Program Files (x86)\WinCDEmu\mkisofs.exe: Warning: Cannot add inode hints with -no-cache-inodes.
+Total translation table size: 0
+Total rockridge attributes bytes: 605
+Total directory bytes: 912
+Path table size(bytes): 10
+37 extents written (0 MB)
+*** Cleanup ***
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/07/2020 14:47:46
+*** Importing ***
+Certificate "SK.root" added to store.
+
+CertUtil: -importPFX command completed successfully.
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                                      
+----------                                -------                                                                      
+DA36FC1785045CEECB2368DFD14DA3A312749233  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S...
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        07-Feb-20     14:47            976 sk_root.cer.tmp                                                       
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 2:
+Serial Number: 15d479ff88b06ba1410f2b833c171fad
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 03-Feb-20 17:11
+ NotAfter: 03-Feb-70 17:21
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): da36fc1785045ceecb2368dfd14da3a312749233
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 15d479ff88b06ba1410f2b833c171fad
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 03-Feb-20 17:11
+ NotAfter: 03-Feb-70 17:21
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): da36fc1785045ceecb2368dfd14da3a312749233
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+SIGN AND PACKAGE DRIVER SESSION 02/07/2020 14:57:04
+*** Creating CAT file ***
+.......................
+Signability test complete.
+
+Errors:
+None
+
+Warnings:
+None
+
+Catalog generation complete.
+C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+*** Get binary PFX ***
+Input Length = 3980
+Output Length = 2853
+CertUtil: -decode command completed successfully.
+*** Signing CAT file ***
+The following certificate was selected:
+    Issued to: SK.root
+    Issued by: SK.root
+    Expires:   Mon Feb 03 17:21:01 2070
+    SHA1 hash: DA36FC1785045CEECB2368DFD14DA3A312749233
+
+Done Adding Additional Store
+Successfully signed: C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial_driver\script\TMP\raincloud_serial.cat
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+*** Copying public certificate ***
+*** Making compressed ISO ***
+C:\Program Files (x86)\WinCDEmu\mkisofs.exe: Warning: Cannot add inode hints with -no-cache-inodes.
+Total translation table size: 0
+Total rockridge attributes bytes: 605
+Total directory bytes: 912
+Path table size(bytes): 10
+37 extents written (0 MB)
+*** Cleanup ***
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/08/2020 17:14:11
+*** Importing ***
+Certificate "SK.root" added to store.
+
+CertUtil: -importPFX command completed successfully.
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+DA36FC1785045CEECB2368DFD14DA3A312749233  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Dev\Atmel_SAM\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-08     17:14            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Certificate "SK.root" added to store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 15d479ff88b06ba1410f2b833c171fad
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-03 17:11
+ NotAfter: 2070-02-03 17:21
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): da36fc1785045ceecb2368dfd14da3a312749233
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/08/2020 17:16:30
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+DA36FC1785045CEECB2368DFD14DA3A312749233  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting PFX ***
+
+
+    Directory: C:\Dev\Atmel_SAM\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-08     17:16           2863 sk_root.pfx.tmp                                  
+Input Length = 2863
+Output Length = 3996
+CertUtil: -encode command completed successfully.
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Dev\Atmel_SAM\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-08     17:16            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Certificate "SK.root" added to store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Certificate "SK.root" added to store.
+CertUtil: -addstore command completed successfully.
+-------------------------------------------------
+GENERATE CERTIFICATE SESSION 02/08/2020 17:20:26
+*** Importing ***
+The object or property already exists. 0x80092005 (-2146885627 CRYPT_E_EXISTS)
+
+Certificate "SK.root" already in store.
+
+CertUtil: -importPFX command completed successfully.
+*** Certificate SK.root already exists ***
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+
+Thumbprint                                Subject                                                 
+----------                                -------                                                 
+DA36FC1785045CEECB2368DFD14DA3A312749233  CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB ...
+
+
+*** Exporting CER ***
+
+
+    Directory: C:\Dev\Atmel_SAM\serial_driver\script
+
+
+Mode                LastWriteTime         Length Name                                             
+----                -------------         ------ ----                                             
+-a----       2020-02-08     17:20            976 sk_root.cer.tmp                                  
+
+
+Input Length = 976
+Output Length = 1402
+CertUtil: -encode command completed successfully.
+*** Installing ***
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 15d479ff88b06ba1410f2b833c171fad
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-03 17:11
+ NotAfter: 2070-02-03 17:21
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): da36fc1785045ceecb2368dfd14da3a312749233
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 15d479ff88b06ba1410f2b833c171fad
+Issuer: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+ NotBefore: 2020-02-03 17:11
+ NotAfter: 2070-02-03 17:21
+Subject: CN=SK.root, CN=Secoh, E=work@secoh.net, O=Custom USB to Serial adapters, S=Raincloud
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): da36fc1785045ceecb2368dfd14da3a312749233
+
+Certificate "SK.root" already in store.
+CertUtil: -addstore command completed successfully.

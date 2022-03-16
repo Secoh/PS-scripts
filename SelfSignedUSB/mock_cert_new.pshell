@@ -1,0 +1,125 @@
+#
+# DO NOT RUN THIS FILE DIRECTLY
+#
+#   Copyright (2020) Secoh
+#   Licensed under the Apache License, Version 2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
+#   Distributed on an "as-is" basis, without warranties or
+#   conditions of any kind.
+#
+
+$config_name = ".\mock_cert.config"
+
+function Get-Config-Item($itemname)
+{
+  $selection = ( Get-Content $config_name | Select-String -Pattern $itemname )
+  if ("$selection" -ne "") { ( ($selection)[-1] -split $itemname )[-1].trim() }
+
+# was:  ( ( Get-Content $config_name | Select-String -Pattern $itemname ) -split $itemname )[-1].trim()
+}
+
+echo "-------------------------------------------------"
+echo "GENERATE CERTIFICATE SESSION $(Get-Date)"
+
+$cert_name = Get-Config-Item "Cert-Name:"
+$file_name = Get-Config-Item "Cert-File-Name:"
+$text_pass = Get-Config-Item "Key-Password:"
+$years_add = Get-Config-Item "Valid-Years:"
+$subj_add  = Get-Config-Item "Extra-Subject-Symbols:"
+$friendly_name = Get-Config-Item "Friendly-Name:"
+
+if ("$cert_name" -eq "" -or "$file_name" -eq "" -or "$text_pass" -eq "")
+{
+echo "ERROR: Certificate name, Output file name, and Password must not be empty"
+exit
+}
+
+$path="C:\Windows\System32"
+
+#
+# verify whether we are importing
+#
+
+$import_lock_file=".\mock_cert_import.lock"   # also used by the caller script
+if (Test-Path $import_lock_file)
+{
+echo "*** Importing ***"
+$source_pfx = Get-Item ".\*" -Filter "*.pfx"
+
+  if (($source_pfx).count -ne 1)
+  {
+  echo ERROR: There must be exactly one PFX file in script directory when importing
+  exit
+  }
+
+move "$source_pfx" "$file_name.pfx"
+certutil -p "$text_pass" -importPFX "$file_name.pfx" NoProtect
+}
+
+#
+# check what certifacates are installed
+#
+
+$cert=get-childitem -Path cert:\LocalMachine\My -DNSName "$cert_name"
+
+if ( ($cert).count -gt 1 )
+{
+echo "ERROR: More than ONE certificate with name $cert_name is present, cannot continue"
+echo "$cert"
+exit
+}
+
+if ("$cert" -eq "")
+{
+  if (Test-Path $import_lock_file)
+  {
+  echo "ERROR: Failed to import certificate from file $file_name.pfx"
+  exit
+  }
+
+  echo "*** Creating New ***"
+
+  if ("$subj_add" -ne "") { $subj_add=",$subj_add" }
+  if ("$years_add" -eq "") { $years_add="50" }
+
+  $friendly_name_command = ""
+  if ("$friendly_name" -ne "") { $friendly_name_command = "-FriendlyName" }
+
+  $cert=new-selfsignedcertificate -CertStoreLocation Cert:\LocalMachine\My -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3") `
+                   -Subject "CN=$cert_name$subj_add" -NotAfter (Get-Date).AddYears($years_add) "$friendly_name_command" "$friendly_name"
+}
+else
+{
+echo "*** Certificate $cert_name is found ***"
+}
+
+echo $cert
+
+#
+# export certificates
+#
+
+if (!(Test-Path $import_lock_file))
+{
+echo "*** Exporting PFX ***"
+del "$file_name.pfx*"
+# echo "$text_pass" > "$file_name.pass.txt"
+$pw=ConvertTo-SecureString -String "$text_pass" -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath "$file_name.pfx.tmp" -Password $pw
+certutil -encode "$file_name.pfx.tmp" "$file_name.pfx"
+del "$file_name.pfx.tmp"
+}
+
+echo "*** Exporting CER ***"
+del "$file_name.cer*"
+export-certificate -Cert $cert -FilePath "$file_name.cer.tmp" -Type CERT
+certutil -encode "$file_name.cer.tmp" "$file_name.cer"
+del "$file_name.cer.tmp"
+
+#
+# install certificates
+#
+
+echo "*** Installing ***"
+certutil -addstore TrustedPublisher "$file_name.cer"
+certutil -addstore Root "$file_name.cer"

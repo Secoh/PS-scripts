@@ -1,0 +1,100 @@
+Copyright (2020) Secoh; Licensed under the Apache License, Version 2.0
+
+1)
+as admin, run powershell
+
+PS C:\Program Files (x86)\Microsoft SDKs> set-location -Path "cert:\LocalMachine\My"
+PS Cert:\LocalMachine\My> new-selfsignedcertificate -CertStoreLocation Cert:\LocalMachine\My -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3") -DnsName "SK.root" -FriendlyName "SKRoot" -NotAfter (Get-Date).AddYears(50)
+
+variant 2:
+
+$origin=(Get-Location)
+set-location -Path "cert:\LocalMachine\My"
+new-selfsignedcertificate -CertStoreLocation Cert:\LocalMachine\My -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3") -Subject "CN=SK.root,CN=Secoh,E=work@secoh.net,O=Custom USB to Serial adapters,S=Raincloud" -NotAfter (Get-Date).AddYears(50)
+
+read:
+https://docs.microsoft.com/en-us/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps
+https://support.jetglobal.com/hc/en-us/articles/235636308-How-To-Create-a-SHA-256-Self-Signed-Certificate
+https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html#p_authz_cert_attributes_conf
+
+import from PFX:
+
+certutil -p sk.root -importPFX sk_root.pfx.txt NoProtect
+
+2)
+as admin, run MMC -32 
+
+File -> Add/Remove Snap-In -> Certificates -> Add -> Computer account -> Local computer -> OK
+
+Copy it to Root Certificate store manually
+
+Export certificate into private key; PFX file, use simple password, all options except Delete
+
+2a) Alternative, command-line
+
+read:
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil
+https://docs.microsoft.com/en-us/powershell/module/pkiclient/export-certificate?view=win10-ps
+https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/about/about_certificate_provider?view=powershell-7
+https://4sysops.com/archives/create-a-self-signed-certificate-with-powershell/
+
+$path="C:\Windows\System32"
+
+$cert=get-childitem -Path cert:\LocalMachine\My -DNSName SK.root
+export-certificate -Cert $cert -FilePath $origin\sk_root.cer.tmp -Type CERT
+certutil -encode $origin\sk_root.cer.tmp $origin\sk_root.cer
+
+$textpass="sk.root"
+echo $textpass > $origin\sk_root.pass.txt
+$pw=ConvertTo-SecureString -String $textpass -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath $origin\sk_root.bin.pfx -Password $pw
+certutil -encode $origin\sk_root.bin.pfx $origin\sk_root.pfx.txt
+
+del $origin\sk_root.*.tmp
+
+(see p.1, var.2)
+set-location -Path $origin
+certutil -addstore TrustedPublisher $origin\sk_root.cer
+certutil -addstore Root $origin\sk_root.cer
+
+3)
+Edit INF file, such as for use/serial converter using external usbser.sys,
+and place it into separate directory
+
+read:
+https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/infverif
+
+4) Have Windows 10 WDK installed
+
+Inf2Cat.exe /driver:"C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial" /os:8_X64,8_X86,Server8_X64,Server2008R2_X64,7_X64,7_X86,Server2008_X64,Server2008_X86,Vista_X64,Vista_X86,Server2003_X64,Server2003_X86,XP_X64,XP_X86,2000,10_X86,10_X64,Server10_X64
+
+variant:
+
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\Inf2Cat.exe" /driver:"C:\Users\Oleg Alferov\Dev\Atmel_SAM\serial" /os:7_X64,7_X86
+
+read:
+https://docs.microsoft.com/ru-ru/windows-hardware/drivers/devtest/inf2cat
+
+5)
+"C:\Program Files (x86)\Windows Kits\10\bin\x64\signtool.exe" sign /v /f sk_root.bin.pfx /p sk.root plus1echo.cat
+
+read:
+https://docs.microsoft.com/ru-ru/windows-hardware/drivers/devtest/signtool
+
+6) You may include CA/Signing certificate along with INF and CAT files. No need to include usbser.sys into distribution package.
+
+On Target machine: Windows 10 will automatically load "Default" driver. Actual INF shall be forced upon the driver to complete the driver installation.
+
+The package shall contain the password for the PFX certificate.
+
+The certificate must be installed both to Trusted Root Certification Authorities, and to Trusted Publishers
+
+Select Update Driver, Browse Computer, Select driver in the location. (WindowxXP-style)
+
+6a)
+
+read:
+https://community.spiceworks.com/topic/1702844-install-inf-file-from-cmd
+
+
+
