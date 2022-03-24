@@ -1,0 +1,41 @@
+#   Copyright (2022) Secoh
+#   Licensed under the Apache License, Version 2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
+#   Distributed on an "as-is" basis, without warranties or
+#   conditions of any kind.
+
+#   DO NOT RUN THIS FILE DIRECTLY
+#   Use tstomp.bat
+
+# Variables defined before this script is executed:
+# $list = (get-childitem . -include * -recurse -force -exclude tstomp.log)
+# $now_source = "" or sample-file
+
+if ($now_source.length -eq 0)
+{
+  $now = (get-date)
+}
+else
+{
+  if ( (get-item $now_source).count -ne 1 )
+  {
+    echo Error: timestamp argument must be single, existing file
+    exit
+  }
+
+  $now = (get-item $now_source).LastWriteTime
+}
+
+echo Access
+foreach ($item in $list) { set-itemproperty -path $item -name Attributes -value Archive }
+
+echo CreationTime
+foreach ($item in $list) { set-itemproperty -path $item -name CreationTime -value $now }
+
+echo LastWriteTime
+foreach ($item in $list) { set-itemproperty -path $item -name LastWriteTime -value $now }
+
+echo LastAccessTime
+foreach ($item in $list) { set-itemproperty -path $item -name LastAccessTime -value $now }
+
+echo Done
