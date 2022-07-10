@@ -1,0 +1,42 @@
+#   Copyright (2022) Secoh
+#   Licensed under the Apache License, Version 2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
+#   Distributed on an "as-is" basis, without warranties or
+#   conditions of any kind.
+
+$list = (get-childitem . -include * -recurse -force)
+
+$daymon = (get-date "9 May, 2022").dayofweek.value__
+$dayfri = (get-date "13 May, 2022").dayofweek.value__
+
+# returns true if $when is Mon-Fri, 0900-1700
+function WorkDate($when)
+{
+  $daywhen = $when.dayofweek.value__
+  $daymins = 60 * $when.hour + $when.minute
+  ( $daywhen -ge $daymon -and $daywhen -le $dayfri -and $daymins -ge 540 -and $daymins -le 1020 )
+}
+
+$result = ""
+
+foreach ($item in $list)
+{
+  $cret = (get-itemproperty -path $item -name CreationTime).CreationTime
+  $wrtt = (get-itemproperty -path $item -name LastWriteTime).LastWriteTime
+
+  if (WorkDate($cret))
+  {
+    $result = $result + "Created " + $cret.dayofweek + " " + $cret + " " + $item.fullname + "`r`n"
+  }
+  elseif (WorkDate($wrtt))
+  {
+    $result = $result + "Written " + $wrtt.dayofweek + " " + $wrtt + " " + $item.fullname + "`r`n"
+  }
+}
+
+if ("$result" -eq "")
+{
+  $result = "No files found: Created or updated Mon-Fri 0900-1700`r`n"
+}
+echo $result
+
