@@ -1,0 +1,32 @@
+#   Copyright (2022) Secoh
+#   Licensed under the Apache License, Version 2.0
+#   http://www.apache.org/licenses/LICENSE-2.0
+#   Distributed on an "as-is" basis, without warranties or
+#   conditions of any kind.
+
+#    !! DANGER !!
+#   THIS SCRIPT INTENDS TO DESTROY FILES PERMANENTLY
+#    !! DANGER !!
+
+#   DO NOT RUN THIS FILE DIRECTLY
+#   Use fstomp.bat
+
+# Variables defined before this script is executed:
+# $runc = disk:\path\path\FStomp\bin\fstomp.exe
+
+$list = (get-childitem . -include * -recurse -force -exclude fstomp-error-log.txt)
+
+foreach ($item in $list)
+{
+  if ($item -is [System.IO.DirectoryInfo])
+  {
+    echo $item.fullname
+  }
+  else
+  {
+#    echo "$runc $item"
+    set-itemproperty -path $item -name Attributes -value Archive
+    invoke-expression -command "$runc $item"
+  }
+}
+
