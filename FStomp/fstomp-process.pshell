@@ -12,7 +12,10 @@
 #   Use fstomp.bat
 
 # Variables defined before this script is executed:
-# $runc = disk:\path\path\FStomp\bin\fstomp.exe
+# $runpath = disk:\path\path\FStomp\bin
+
+$runcmd = "$runpath\fstomp.exe"
+# $runcmd = "$runpath\test.bat"
 
 $list = (get-childitem . -include * -recurse -force -exclude fstomp-error-log.txt)
 
@@ -24,9 +27,9 @@ foreach ($item in $list)
   }
   else
   {
-#    echo "$runc $item"
+#    echo "$runcmd ""$item"""
     set-itemproperty -path $item -name Attributes -value Archive
-    invoke-expression -command "$runc $item"
+    invoke-expression -command "$runcmd ""$item"""
   }
 }
 

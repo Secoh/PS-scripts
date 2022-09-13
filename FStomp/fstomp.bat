@@ -19,5 +19,5 @@ echo Cancelled
 exit
 
 :accept
-(echo $runc = "%~dp0bin\fstomp.exe" & type "%~dp0fstomp-process.pshell") | powershell -Command - 2> fstomp-error-log.txt
+(echo $runpath = "%~dp0bin" & type "%~dp0fstomp-process.pshell") | powershell -Command - 2> fstomp-error-log.txt
 
